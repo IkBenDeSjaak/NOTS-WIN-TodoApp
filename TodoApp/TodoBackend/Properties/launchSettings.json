@@ -12,7 +12,7 @@
     "TodoBackend": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "api/todoitems",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
