@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2ba19c6c-8259-45c3-81a9-ac72f691589b": {
+      "ProjectGuid": "2ba19c6c-8259-45c3-81a9-ac72f691589b",
+      "DisplayName": "TodoBackend",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "d2219ca0-4fca-4af8-95c2-ae9160ed11b2": {
+      "ProjectGuid": "d2219ca0-4fca-4af8-95c2-ae9160ed11b2",
+      "DisplayName": "TodoClient",
+      "ColorIndex": 1
+    },
+    "5bafbc07-2683-466a-ad46-eb6b60c77671": {
+      "ProjectGuid": "5bafbc07-2683-466a-ad46-eb6b60c77671",
+      "DisplayName": "TodoClient",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

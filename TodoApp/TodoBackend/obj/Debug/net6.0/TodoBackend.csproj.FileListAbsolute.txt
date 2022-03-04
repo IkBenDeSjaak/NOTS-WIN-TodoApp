@@ -10,7 +10,6 @@ C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\obj\Debug\net6.0\TodoBackend.csproj.AssemblyReference.cache
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\obj\Debug\net6.0\TodoBackend.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\obj\Debug\net6.0\TodoBackend.AssemblyInfoInputs.cache
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoBackend\obj\Debug\net6.0\TodoBackend.AssemblyInfo.cs
