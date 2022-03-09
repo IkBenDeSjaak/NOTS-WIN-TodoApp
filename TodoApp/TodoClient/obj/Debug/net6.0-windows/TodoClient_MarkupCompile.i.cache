@@ -1,7 +1,7 @@
 ﻿TodoClient
 1.0.0.0
 
-winexe
+exe
 C#
 .cs
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoClient\obj\Debug\net6.0-windows\
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\koksj\Documents\HAN\HBO-ICT\21-22-verdiepend\NOTS\WIN\Beroepsproducten\NOTS-WIN-TodoApp\TodoApp\TodoClient\App.xaml
 11407045341
 
-7902914275
+8-6321005
 1941142463650
 MainWindow.xaml;
 
-True
+False
 

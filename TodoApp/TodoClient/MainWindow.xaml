@@ -44,7 +44,7 @@
         </StackPanel>
 
         <StackPanel>
-            <Border Margin="200,210,200,0" Height="190" BorderThickness="1" BorderBrush="Black">
+            <Border Margin="180,210,180,0" Height="190" BorderThickness="1" BorderBrush="Black">
                 <ListBox 
          ItemsSource="{Binding Source={StaticResource TodoItems}, 
                                 Path=Todos}"
@@ -67,7 +67,7 @@
                         <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Name="border" BorderBrush="Black" BorderThickness="2"
-          Padding="5" Margin="5">
+          Padding="5 5 5 5" Margin="5 5 5 5">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="20"/>
@@ -75,18 +75,19 @@
                                     <RowDefinition Height="20"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <!--<ColumnDefinition Width="1*"/>-->
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                                <TextBlock Width="70" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding Title}" />
                                 <Button Grid.Row="0" Grid.Column="2" Width="50" HorizontalAlignment="Right" Background="Gray">Delete</Button>
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Description:"/>
-                                <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Text}"/>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Completed:"/>
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding IsCompleted}"/>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="0" Text="Description:"/>
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Description}"/>
+                                <TextBlock Grid.Row="2" HorizontalAlignment="Left" Grid.Column="0" Text="Completed:"/>
+                                <TextBlock Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding IsCompleted}"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
