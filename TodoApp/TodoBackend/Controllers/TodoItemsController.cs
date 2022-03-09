@@ -59,8 +59,9 @@ namespace TodoBackend.Controllers
                 return NotFound();
             }
 
-            todoItem.Name = todoItemDTO.Name;
+            todoItem.Title = todoItemDTO.Title;
             todoItem.IsComplete = todoItemDTO.IsComplete;
+            todoItem.Description = todoItemDTO.Description;
 
             try
             {
@@ -81,7 +82,8 @@ namespace TodoBackend.Controllers
             var todoItem = new TodoItem
             {
                 IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
+                Title = todoItemDTO.Title,
+                Description = todoItemDTO.Description,
             };
 
             _context.TodoItems.Add(todoItem);
@@ -119,7 +121,8 @@ namespace TodoBackend.Controllers
             new TodoItemDTO
             {
                 Id = todoItem.Id,
-                Name = todoItem.Name,
+                Title = todoItem.Title,
+                Description = todoItem.Description,
                 IsComplete = todoItem.IsComplete
             };
     }

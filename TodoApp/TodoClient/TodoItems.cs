@@ -24,7 +24,7 @@ namespace TodoClient
         {
             for(int i = 0; i < 5; i++)
             {
-                TodoItem item = new TodoItem("aaaa", "bbbbbbb" + i, false);
+                TodoItem item = new TodoItem(i, "aaaa", "bbbbbbb" + i, false);
                 todos.Add(item);
             }
         }
