@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:TodoClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
 
     <Window.Resources>
         <local:TodoItems x:Key="TodoItems" />
     </Window.Resources>
 
-    <Grid>
+    <Grid DataContext="{StaticResource TodoItems}" Background="LightGoldenrodYellow">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -21,8 +21,9 @@
             <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="30">
             TodoApp
             </TextBlock>
-            <Border BorderThickness="1" BorderBrush="Black" Margin="200,20,200,10">
-                <Grid Margin="5">
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="12" Text="{Binding ErrorMessage}"/>
+            <Border BorderThickness="2" BorderBrush="Black" Margin="200,20,200,10" Padding="5" Background="White">
+                <Grid Margin="0" Background="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="60"/>
@@ -33,66 +34,82 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-
-                    <Label Grid.Row="0" Grid.Column="0" Content="Title"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Text="" Margin="5"/>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Text"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="" Margin="5"/>
-                    <Button Background="Yellow" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="100" Margin="5">Create Todo</Button>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Title" FontSize="13"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NewTodoItem.Title}" Margin="5"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Description" FontSize="13"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding NewTodoItem.Description}" Margin="5" TextWrapping="Wrap"/>
+                    <Border Background="WhiteSmoke" BorderBrush="Black" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="100" Margin="5">
+                        <Button Background="Transparent" BorderThickness="0"  Command="{Binding CreateTodoCommand}">Create Todo</Button>
+                    </Border>
                 </Grid>
             </Border>
         </StackPanel>
 
         <StackPanel>
-            <Border Margin="180,210,180,0" Height="190" BorderThickness="1" BorderBrush="Black">
+            <Border Margin="170,230,170,0" Height="300" BorderThickness="1" BorderBrush="Black">
                 <ListBox 
-         ItemsSource="{Binding Source={StaticResource TodoItems}, 
-                                Path=Todos}"
+         ItemsSource="{Binding Todos}"
                      HorizontalContentAlignment="Stretch"
                      Focusable="False">
-                
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="Focusable" Value="False"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <ContentPresenter/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-                
-                        <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border Name="border" BorderBrush="Black" BorderThickness="2"
-          Padding="5 5 5 5" Margin="5 5 5 5">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="20"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="250"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <!--<ColumnDefinition Width="1*"/>-->
-                                </Grid.ColumnDefinitions>
 
-                                <TextBlock Width="70" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
-                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding Title}" />
-                                <Button Grid.Row="0" Grid.Column="2" Width="50" HorizontalAlignment="Right" Background="Gray">Delete</Button>
-                                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="0" Text="Description:"/>
-                                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Description}"/>
-                                <TextBlock Grid.Row="2" HorizontalAlignment="Left" Grid.Column="0" Text="Completed:"/>
-                                <TextBlock Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding IsCompleted}"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Focusable" Value="False"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Name="border" BorderBrush="Black" BorderThickness="2"
+          Padding="5 5 5 5" Margin="5 5 5 5" CornerRadius="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Width="70" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
+                                    <TextBlock Grid.Row="0" HorizontalAlignment="Left" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Title}" />
+                                    <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" CornerRadius="5" Background="DarkRed">
+                                        <Button Width="60" Height="20" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="White" Command="{Binding Source={StaticResource TodoItems}, 
+                                Path=DeleteTodoCommand}" CommandParameter="{Binding Id}">Delete</Button>
+                                    </Border>
+                                    <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="0" Text="Description:"/>
+                                    <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Description}"/>
+                                    <TextBlock Grid.Row="2" HorizontalAlignment="Left" Grid.Column="0" Text="Completed:"/>
+                                    <TextBlock Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding IsComplete}"/>
+                                    <Border Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" CornerRadius="5" Background="Green">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsComplete}" Value="True">
+                                                        <Setter Property="Visibility" Value="Hidden"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        
+                                        <Button Width="60" Height="20" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="White" Command="{Binding Source={StaticResource TodoItems}, 
+                                Path=MarkAsCompleteCommand}" CommandParameter="{Binding Id}">Complete</Button>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Border>
         </StackPanel>
     </Grid>

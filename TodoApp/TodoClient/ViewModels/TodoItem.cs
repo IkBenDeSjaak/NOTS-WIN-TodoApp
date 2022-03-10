@@ -10,14 +10,57 @@ namespace TodoClient
 {
     public class TodoItem : ViewModelBase
     {
-        int id;
-        string title;
-        string description;
-        bool isComplete;
+        private int _id;
+        private string _title;
+        private string _description;
+        private bool _isComplete;
 
-        public int Id { get => id; set => id = value; }
-        public string Title { get => title; set => title = value; }
-        public string Description { get => description; set => description = value; }
-        public bool IsCompleted { get => isComplete; set => isComplete = value; }
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                SetProperty(ref _id, value);
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                SetProperty(ref _title, value);
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                SetProperty(ref _description, value);
+            }
+        }
+
+        public bool IsComplete
+        {
+            get
+            {
+                return _isComplete;
+            }
+            set
+            {
+                SetProperty(ref _isComplete, value);
+            }
+        }
     }
 }
