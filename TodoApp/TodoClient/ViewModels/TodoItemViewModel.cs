@@ -1,29 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TodoClient.Models;
 using TodoClient.ViewModels;
 
 namespace TodoClient
 {
     public class TodoItemViewModel : ViewModelBase
     {
-        private int _id;
-        private string _title;
-        private string _description;
-        private bool _isComplete;
+        private TodoItem _todoItem;
+
+        public TodoItemViewModel()
+        {
+            _todoItem = new TodoItem();
+        }
+
+        public TodoItemViewModel(TodoItem todoItem)
+        {
+            _todoItem = todoItem;
+        }
+
+        public TodoItemViewModel(TodoItemViewModel todoItemViewModel)
+        {
+            _todoItem = new TodoItem { Id = todoItemViewModel.Id, Title = todoItemViewModel.Title, Description = todoItemViewModel.Description, IsComplete = todoItemViewModel.IsComplete };
+        }
+
+        public TodoItemViewModel(int id, string title, string description, bool isComplete)
+        {
+            _todoItem = new TodoItem { Id = id, Title = title, Description = description, IsComplete = isComplete };
+        }
 
         public int Id
         {
             get
             {
-                return _id;
+                return _todoItem.Id;
             }
             set
             {
-                SetProperty(ref _id, value);
+                _todoItem.Id = value;
+                OnPropertyChanged(nameof(Id));
             }
         }
 
@@ -31,11 +44,12 @@ namespace TodoClient
         {
             get
             {
-                return _title;
+                return _todoItem.Title;
             }
             set
             {
-                SetProperty(ref _title, value);
+                _todoItem.Title = value;
+                OnPropertyChanged(nameof(Title));
             }
         }
 
@@ -43,11 +57,12 @@ namespace TodoClient
         {
             get
             {
-                return _description;
+                return _todoItem.Description;
             }
             set
             {
-                SetProperty(ref _description, value);
+                _todoItem.Description = value;
+                OnPropertyChanged(nameof(Description));
             }
         }
 
@@ -55,11 +70,12 @@ namespace TodoClient
         {
             get
             {
-                return _isComplete;
+                return _todoItem.IsComplete;
             }
             set
             {
-                SetProperty(ref _isComplete, value);
+                _todoItem.IsComplete = value;
+                OnPropertyChanged(nameof(IsComplete));
             }
         }
     }

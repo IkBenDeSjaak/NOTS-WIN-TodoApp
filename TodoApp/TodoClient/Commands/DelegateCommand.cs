@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TodoClient.Commands
 {
@@ -25,12 +21,12 @@ namespace TodoClient.Commands
             this.canExecute = canExecute;
         }
 
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
             return canExecute(parameter);
         }
 
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
             execute(parameter);
         }

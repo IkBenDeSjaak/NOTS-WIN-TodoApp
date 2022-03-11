@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using TodoClient.Commands;
 using TodoClient.ViewModels;
 
@@ -59,14 +53,11 @@ namespace TodoClient
 
             try
             {
-                var response = await client.GetFromJsonAsync<List<TodoItemViewModel>>(url);
+                var response = await client.GetFromJsonAsync<ObservableCollection<TodoItemViewModel>>(url);
 
                 if (response != null)
                 {
-                    foreach (var item in response)
-                    {
-                        todos.Add(item);
-                    }
+                    Todos = response;
                 }
             }
             catch (HttpRequestException)
@@ -83,18 +74,18 @@ namespace TodoClient
 
             try
             {
-                var response = await client.PostAsJsonAsync(url, newTodoItem);
+                var response = await client.PostAsJsonAsync(url, NewTodoItem);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    newTodoItem.Title = "";
-                    newTodoItem.Description = "";
+                    NewTodoItem.Title = "";
+                    NewTodoItem.Description = "";
 
                     var newTodo = await client.GetFromJsonAsync<TodoItemViewModel>(response.Headers.Location);
 
                     if (newTodo != null)
                     {
-                        todos.Add(newTodo);
+                        Todos.Add(newTodo);
                     }
                 }
             }
@@ -109,7 +100,7 @@ namespace TodoClient
 
             string url = "https://localhost:7275/api/todoitems/" + (int)parameter;
 
-            TodoItemViewModel todoItem = todos.First((item) => item.Id == (int)parameter);
+            TodoItemViewModel todoItem = Todos.First((item) => item.Id == (int)parameter);
             todoItem.IsComplete = true;
 
             HttpClient client = new();
@@ -136,9 +127,9 @@ namespace TodoClient
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TodoItemViewModel todoItem = todos.First((item) => item.Id == (int)parameter);
+                    TodoItemViewModel todoItem = Todos.First((item) => item.Id == (int)parameter);
 
-                    todos.Remove(todoItem);
+                    Todos.Remove(todoItem);
                 }
             }
             catch (HttpRequestException)
