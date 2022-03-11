@@ -8,7 +8,7 @@ using TodoClient.ViewModels;
 
 namespace TodoClient
 {
-    public class TodoItem : ViewModelBase
+    public class TodoItemViewModel : ViewModelBase
     {
         private int _id;
         private string _title;

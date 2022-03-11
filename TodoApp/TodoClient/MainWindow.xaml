@@ -8,10 +8,10 @@
         Title="MainWindow" Height="600" Width="800">
 
     <Window.Resources>
-        <local:TodoItems x:Key="TodoItems" />
+        <local:TodoAppViewModel x:Key="TodoAppViewModel" />
     </Window.Resources>
 
-    <Grid DataContext="{StaticResource TodoItems}" Background="LightGoldenrodYellow">
+    <Grid DataContext="{StaticResource TodoAppViewModel}" Background="LightGoldenrodYellow">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -84,7 +84,7 @@
                                     <TextBlock Width="70" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Text="Task Name:"/>
                                     <TextBlock Grid.Row="0" HorizontalAlignment="Left" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Title}" />
                                     <Border Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" CornerRadius="5" Background="DarkRed">
-                                        <Button Width="60" Height="20" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="White" Command="{Binding Source={StaticResource TodoItems}, 
+                                        <Button Width="60" Height="20" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="White" Command="{Binding Source={StaticResource TodoAppViewModel}, 
                                 Path=DeleteTodoCommand}" CommandParameter="{Binding Id}">Delete</Button>
                                     </Border>
                                     <TextBlock Grid.Row="1" HorizontalAlignment="Left" Grid.Column="0" Text="Description:"/>
@@ -102,7 +102,7 @@
                                             </Style>
                                         </Border.Style>
                                         
-                                        <Button Width="60" Height="20" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="White" Command="{Binding Source={StaticResource TodoItems}, 
+                                        <Button Width="60" Height="20" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Foreground="White" Command="{Binding Source={StaticResource TodoAppViewModel}, 
                                 Path=MarkAsCompleteCommand}" CommandParameter="{Binding Id}">Complete</Button>
                                     </Border>
                                 </Grid>

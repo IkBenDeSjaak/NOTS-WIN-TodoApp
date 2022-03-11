@@ -13,10 +13,10 @@ using TodoClient.ViewModels;
 
 namespace TodoClient
 {
-    public class TodoItems : ViewModelBase
+    public class TodoAppViewModel : ViewModelBase
     {
-        ObservableCollection<TodoItem> todos = new();
-        TodoItem newTodoItem = new();
+        ObservableCollection<TodoItemViewModel> todos = new();
+        TodoItemViewModel newTodoItem = new();
         string errorMessage = string.Empty;
 
         // IDelegateCommand implementation
@@ -24,7 +24,7 @@ namespace TodoClient
         public IDelegateCommand DeleteTodoCommand { protected set; get; }
         public IDelegateCommand MarkAsCompleteCommand { protected set; get; }
 
-        public TodoItems()
+        public TodoAppViewModel()
         {
             CreateTodoCommand = new DelegateCommand(ExecuteCreateTodo);
             MarkAsCompleteCommand = new DelegateCommand(ExecuteMarkTodoAsComplete);
@@ -33,13 +33,13 @@ namespace TodoClient
             LoadTodos();
         }
 
-        public ObservableCollection<TodoItem> Todos
+        public ObservableCollection<TodoItemViewModel> Todos
         {
             get { return todos; }
             set { SetProperty(ref todos, value); }
         }
 
-        public TodoItem NewTodoItem
+        public TodoItemViewModel NewTodoItem
         {
             get { return newTodoItem; }
             set { SetProperty(ref newTodoItem, value); }
@@ -59,7 +59,7 @@ namespace TodoClient
 
             try
             {
-                var response = await client.GetFromJsonAsync<List<TodoItem>>(url);
+                var response = await client.GetFromJsonAsync<List<TodoItemViewModel>>(url);
 
                 if (response != null)
                 {
@@ -71,7 +71,6 @@ namespace TodoClient
             }
             catch (HttpRequestException)
             {
-                Console.WriteLine("dsdasd");
                 ErrorMessage = "Something went wrong while loading todos.";
             }
         }
@@ -91,7 +90,7 @@ namespace TodoClient
                     newTodoItem.Title = "";
                     newTodoItem.Description = "";
 
-                    var newTodo = await client.GetFromJsonAsync<TodoItem>(response.Headers.Location);
+                    var newTodo = await client.GetFromJsonAsync<TodoItemViewModel>(response.Headers.Location);
 
                     if (newTodo != null)
                     {
@@ -110,7 +109,7 @@ namespace TodoClient
 
             string url = "https://localhost:7275/api/todoitems/" + (int)parameter;
 
-            TodoItem todoItem = todos.First((item) => item.Id == (int)parameter);
+            TodoItemViewModel todoItem = todos.First((item) => item.Id == (int)parameter);
             todoItem.IsComplete = true;
 
             HttpClient client = new();
@@ -137,7 +136,7 @@ namespace TodoClient
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TodoItem todoItem = todos.First((item) => item.Id == (int)parameter);
+                    TodoItemViewModel todoItem = todos.First((item) => item.Id == (int)parameter);
 
                     todos.Remove(todoItem);
                 }
