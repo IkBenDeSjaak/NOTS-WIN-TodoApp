@@ -97,7 +97,6 @@ namespace TodoClient
 
         async void ExecuteMarkTodoAsComplete(object parameter)
         {
-
             string url = "https://localhost:7275/api/todoitems/" + (int)parameter;
 
             TodoItemViewModel todoItem = Todos.First((item) => item.Id == (int)parameter);
