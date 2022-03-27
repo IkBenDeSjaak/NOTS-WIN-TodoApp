@@ -1,8 +1,8 @@
 # TodoApp
 
 ## Projecten
-- `TodoClient` (WPF App met MVVM, data binding en command binding)
-- `TodoBackend` (API met ASP.Net Core)
+- `TodoClient` (WPF App with MVVM, data binding and command binding)
+- `TodoBackend` (API with ASP.Net Core)
 
 ## Run Locally
 
